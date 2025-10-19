@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Estás offline — Último Amanecer</title>
+    <meta name="theme-color" content="#00E5FF" />
+    <style>
+      :root{--bg:#0B0F16;--panel:#0E1525;--text:#E6EDF7;--cian:#00E5FF;--muted:#8A94A6}
+      *{box-sizing:border-box}
+      body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);color:var(--text);
+           font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial}
+      .card{width:min(92vw,640px);padding:24px;border-radius:16px;border:1px solid #142034;
+            background:linear-gradient(180deg,var(--panel),var(--bg));box-shadow:0 10px 30px rgba(0,0,0,.35)}
+      h1{margin:0 0 8px;font-size:24px;color:#7DF9FF}
+      p{margin:0 0 12px;opacity:.9;line-height:1.6}
+      ul{margin:8px 0 0 18px;color:var(--muted)}
+      .btn{display:inline-block;margin-top:16px;padding:12px 16px;border-radius:12px;border:1px solid #143a44;
+           color:var(--bg);background:var(--cian);text-decoration:none;font-weight:600}
+      .hint{margin-top:8px;font-size:12px;color:var(--muted)}
+    </style>
+  </head>
+  <body>
+    <main class="card" role="main" aria-label="Contenido sin conexión">
+      <h1>Sin conexión</h1>
+      <p>No pudimos cargar todo el contenido. Cuando recuperes internet, esta página se actualizará.</p>
+      <ul>
+        <li>La landing y recursos clave se guardan para usar sin conexión.</li>
+        <li>Si es tu primera visita, verás este mensaje como respaldo.</li>
+      </ul>
+      <a class="btn" href="/">Reintentar</a>
+      <div class="hint">Consejo: instala la app para mejor experiencia offline.</div>
+    </main>
+  </body>
+</html>
