@@ -1,63 +1,59 @@
-import withPWAInit from 'next-pwa';
-
-const withPWA = withPWAInit({
-  dest: 'public',
-  register: true,
-  skipWaiting: true,
-  disable: process.env.NODE_ENV === 'development',
-  fallbacks: { document: '/offline.html' },
-  cacheStartUrl: true,
-  cacheOnFrontEndNav: true,
-  workboxOptions: {
-    // 💡 Precarga explícita de rutas críticas
-    additionalManifestEntries: [
-      { url: '/', revision: null },
-      { url: '/offline.html', revision: null },
-      { url: '/manifest.json', revision: null },
-      // opcionalmente los íconos si quieres garantizarlos
-      { url: '/icons/maskable-192.png', revision: null },
-      { url: '/icons/maskable-512.png', revision: null },
-      { url: '/icons/mono-256.png', revision: null },
-      { url: '/icons/favicon-32.png', revision: null },
-    ],
-  },
-  runtimeCaching: [
+{
+  "name": "Operación: Último Amanecer",
+  "short_name": "UltimoAmanecer",
+  "description": "Shooter cooperativo PWA — Sobrevive, mejora tu arsenal y domina el ranking.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0B0F16",
+  "theme_color": "#00E5FF",
+  "id": "/?utm_source=web_app_manifest",
+  "lang": "es-MX",
+  "categories": ["games", "action", "shooter"],
+  "icons": [
     {
-      urlPattern: /^https:\/\/fonts\.(?:googleapis|gstatic)\.com\/.*/i,
-      handler: 'CacheFirst',
-      options: {
-        cacheName: 'google-fonts',
-        expiration: { maxEntries: 4, maxAgeSeconds: 31536000 },
-      },
+      "src": "/icons/maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp|avif)$/i,
-      handler: 'CacheFirst',
-      options: {
-        cacheName: 'images',
-        expiration: { maxEntries: 60, maxAgeSeconds: 2592000 },
-      },
+      "src": "/icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      urlPattern: /\.(?:js|css|woff2?)$/i,
-      handler: 'StaleWhileRevalidate',
-      options: { cacheName: 'static-resources' },
-    },
-    {
-      urlPattern: /^https?.*/i,
-      handler: 'NetworkFirst',
-      options: {
-        cacheName: 'default',
-        networkTimeoutSeconds: 5,
-      },
-    },
+      "src": "/icons/mono-256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "monochrome"
+    }
   ],
-});
 
-/** @type {import('next').NextConfig} */
-const config = {
-  reactStrictMode: true,
-  images: { formats: ['image/avif', 'image/webp'] },
-};
+"screenshots": [
+  {
+    "src": "/icons/splash-1024.png",
+    "sizes": "1024x1024",
+    "type": "image/png",
+    "form_factor": "wide",
+    "label": "Pantalla de inicio"
+  }
+],
 
-export default withPWA(config);
+  "shortcuts": [
+    {
+      "name": "Jugar ahora",
+      "short_name": "Jugar",
+      "url": "/#jugar",
+      "icons": [{ "src": "/icons/maskable-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Ranking",
+      "short_name": "Ranking",
+      "url": "/#ranking",
+      "icons": [{ "src": "/icons/maskable-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
