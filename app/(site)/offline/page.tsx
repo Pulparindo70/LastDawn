@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export const metadata = {
   title: 'Sin conexión — Último Amanecer',
 };
@@ -19,18 +21,18 @@ export default function OfflinePage() {
         </ul>
 
         <div className="mt-6 flex flex-wrap gap-3">
-          <a
+          <Link
             href="/"
             className="inline-flex items-center gap-2 rounded-2xl border border-[#143a44] bg-cian px-5 py-3 font-semibold text-[#0B0F16] hover:brightness-110 active:scale-[.98]"
           >
             Reintentar
-          </a>
-          <a
+          </Link>
+          <Link
             href="/#instalar"
             className="inline-flex items-center gap-2 rounded-2xl border border-[#143a44] bg-[#0f1e2a] px-5 py-3 font-semibold text-cian hover:bg-[#112b35] active:scale-[.98]"
           >
             Cómo instalar
-          </a>
+          </Link>
         </div>
 
         <div className="mt-8 rounded-xl border border-[#142034] p-4">

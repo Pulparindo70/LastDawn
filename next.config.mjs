@@ -6,7 +6,7 @@ const withPWA = withPWAInit({
   skipWaiting: true,
   disable: process.env.NODE_ENV === 'development',
   fallbacks: {
-    document: '/offline.html', // fallback cuando no hay conexión
+    document: '/offline.html',
   },
   cacheStartUrl: true,
   cacheOnFrontEndNav: true,
@@ -24,7 +24,7 @@ const withPWA = withPWAInit({
       handler: 'CacheFirst',
       options: {
         cacheName: 'images',
-        expiration: { maxEntries: 60, maxAgeSeconds: 30 * 24 * 60 * 60 },
+        expiration: { maxEntries: 60, maxAgeSeconds: 2592000 },
       },
     },
     {
@@ -47,7 +47,6 @@ const withPWA = withPWAInit({
 const config = {
   reactStrictMode: true,
   images: { formats: ['image/avif', 'image/webp'] },
-  experimental: { appDir: true },
 };
 
 export default withPWA(config);

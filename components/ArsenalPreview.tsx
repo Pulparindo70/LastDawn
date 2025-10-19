@@ -1,15 +1,16 @@
 'use client';
 
 import { useState } from 'react';
+import type { LucideIcon } from 'lucide-react';
 import { Crosshair, Zap, Flame, Gauge } from 'lucide-react';
 
 type Weapon = {
   id: string;
   name: string;
   rarity: 'Común' | 'Rara' | 'Épica' | 'Exótica';
-  dps: number;     // 0–100
-  rpm: number;     // 0–100
-  accuracy: number;// 0–100
+  dps: number;      // 0–100
+  rpm: number;      // 0–100
+  accuracy: number; // 0–100
   desc: string;
 };
 
@@ -52,7 +53,15 @@ const WEAPONS: Weapon[] = [
   },
 ];
 
-function StatBar({ label, value, icon: Icon }: { label: string; value: number; icon: any }) {
+function StatBar({
+  label,
+  value,
+  icon: Icon,
+}: {
+  label: string;
+  value: number;
+  icon: LucideIcon;
+}) {
   const clamped = Math.max(0, Math.min(100, value));
   return (
     <div className="space-y-1">
@@ -88,15 +97,16 @@ function RarityBadge({ rarity }: { rarity: Weapon['rarity'] }) {
 
 export default function ArsenalPreview() {
   const [active, setActive] = useState(WEAPONS[0].id);
-
-  const selected = WEAPONS.find(w => w.id === active)!;
+  const selected = WEAPONS.find((w) => w.id === active)!;
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-12">
       <div className="mb-6 flex items-end justify-between">
-        <h2 className="font-hud text-2xl tracking-wide text-cian md:text-3xl">Arsenal</h2>
+        <h2 className="font-hud text-2xl tracking-wide text-cian md:text-3xl">
+          Arsenal
+        </h2>
         <div className="hidden gap-2 md:flex">
-          {WEAPONS.map(w => (
+          {WEAPONS.map((w) => (
             <button
               key={w.id}
               onClick={() => setActive(w.id)}
@@ -110,7 +120,6 @@ export default function ArsenalPreview() {
         </div>
       </div>
 
-      {/* Contenido principal: tarjeta grande + rail de tarjetas (mobile) */}
       <div className="grid gap-6 md:grid-cols-2">
         {/* Tarjeta grande (detalle) */}
         <article className="hud-card p-6 md:p-8">
@@ -135,7 +144,7 @@ export default function ArsenalPreview() {
 
         {/* Rail de armas (mobile) / grid simple (desktop) */}
         <div className="flex snap-x gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-2 md:gap-4 md:overflow-visible md:pb-0">
-          {WEAPONS.map(w => (
+          {WEAPONS.map((w) => (
             <button
               key={w.id}
               onClick={() => setActive(w.id)}
