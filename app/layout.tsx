@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
+import SWRegister from '@/components/SWRegister';
 
 export const metadata: Metadata = {
   title: 'Operación: Último Amanecer',
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-[#0B0F16] text-slate-100 antialiased">
         {/* Aquí luego montamos <Providers/> si usamos Zustand persist o Theme */}
         {children}
+        <SWRegister />
       </body>
     </html>
   );

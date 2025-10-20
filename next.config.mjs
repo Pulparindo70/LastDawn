@@ -8,19 +8,18 @@ const withPWA = withPWAInit({
   fallbacks: { document: '/offline.html' },
   cacheStartUrl: true,
   cacheOnFrontEndNav: true,
-  workboxOptions: {
-    // 💡 Precarga explícita de rutas críticas
-    additionalManifestEntries: [
-      { url: '/', revision: null },
-      { url: '/offline.html', revision: null },
-      { url: '/manifest.json', revision: null },
-      // opcionalmente los íconos si quieres garantizarlos
-      { url: '/icons/maskable-192.png', revision: null },
-      { url: '/icons/maskable-512.png', revision: null },
-      { url: '/icons/mono-256.png', revision: null },
-      { url: '/icons/favicon-32.png', revision: null },
-    ],
-  },
+  // Evita error bad-precaching-response para app-build-manifest en local
+  buildExcludes: [/app-build-manifest\.json$/],
+  // Precarga explícita de rutas clave
+  additionalManifestEntries: [
+    { url: '/', revision: null },
+    { url: '/offline.html', revision: null },
+    { url: '/manifest.json', revision: null },
+    { url: '/icons/maskable-192.png', revision: null },
+    { url: '/icons/maskable-512.png', revision: null },
+    { url: '/icons/mono-256.png', revision: null },
+    { url: '/icons/favicon-32.png', revision: null },
+  ],
   runtimeCaching: [
     {
       urlPattern: /^https:\/\/fonts\.(?:googleapis|gstatic)\.com\/.*/i,
